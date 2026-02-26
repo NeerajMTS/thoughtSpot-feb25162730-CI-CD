@@ -1,0 +1,91 @@
+guid: 26f3b641-1b3e-4007-8ce4-04cf6a557fa2
+model:
+  name: cx-be-feb25162730-auto-worksheet-version-control
+  model_tables:
+  - name: DIM_RETAPP_PRODUCTS
+    fqn: b5ca9d6d-8862-451f-bfdd-11bed2a6ba33
+  - name: FACT_RETAPP_SALES
+    fqn: 6062c937-378f-4b3f-8a45-9c04dd75d574
+    joins:
+    - with: DIM_RETAPP_PRODUCTS
+      referencing_join: C_DIM_RETAPP_PRODUCTS
+  columns:
+  - name: Productid
+    column_id: DIM_RETAPP_PRODUCTS::PRODUCTID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Productname
+    column_id: DIM_RETAPP_PRODUCTS::PRODUCTNAME
+    properties:
+      column_type: ATTRIBUTE
+  - name: Producttype
+    column_id: DIM_RETAPP_PRODUCTS::PRODUCTTYPE
+    properties:
+      column_type: ATTRIBUTE
+  - name: Itemprice
+    column_id: FACT_RETAPP_SALES::ITEMPRICE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Quantitypurchased
+    column_id: FACT_RETAPP_SALES::QUANTITYPURCHASED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Recorddate
+    column_id: FACT_RETAPP_SALES::RECORDDATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Sales
+    column_id: FACT_RETAPP_SALES::SALES
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Salesid
+    column_id: FACT_RETAPP_SALES::SALESID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Storeid
+    column_id: FACT_RETAPP_SALES::STOREID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  properties:
+    is_bypass_rls: false
+    join_progressive: true
+    spotter_config:
+      is_spotter_enabled: false
+  parameters:
+  - id: 3464a079-c2be-4cce-b6a1-6e556bf99c9a
+    name: bool
+    data_type: BOOL
+    default_value: 'true'
+    list_config:
+      list_choice:
+      - value: 'true'
+      - value: 'false'
+    description: ''
+  - id: 48757623-1743-4b92-a077-b34eba76a814
+    name: decimal
+    data_type: DOUBLE
+    default_value: '1.2'
+    description: ''
+  - id: ead866b5-9e7e-4f1b-9833-27f40e0f18b8
+    name: int
+    data_type: INT64
+    default_value: '2'
+    description: ''
+  - id: a5409052-ac9b-4ffe-93c4-d09fc9b3496e
+    name: string
+    data_type: CHAR
+    default_value: text
+    description: ''
